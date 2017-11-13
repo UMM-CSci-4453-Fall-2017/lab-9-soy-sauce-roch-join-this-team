@@ -104,4 +104,8 @@ app.get("/login", function(req, res){
   .catch(function(err){console.log("DANGER:",err)});
 });
 
+app.post("/sale", function(req, res){
+  res.send();
+});
+
 app.listen(port);

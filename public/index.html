@@ -34,7 +34,7 @@
   </form>
 
   <div class="container-fluid" ng-show="login=bool">
-      <h1>Cash Register</h1>
+      <h1>Cash Register You Pleb</h1>
       <h3> User {{username}} is currently logged in
         <button id="logOut" class="btn btn-default" ng-click="logOutClick($event)">
           Log-out
@@ -72,8 +72,11 @@
           </tr>
           <tr>
             <button id="totalAmount"style="position:fixed;height:50px;bottom:450px;right:0px;width:500px;font-size:30px" class="btn btn-success">
+              <strong>Total: ${{amount}}</strong>
+            </button>
+            <button id="totalAmount"style="position:fixed;height:50px;bottom:400px;right:0px;width:500px;font-size:30px" class="btn btn-success" ng-click="saleButton($event)">
               <span class="glyphicon glyphicon-shopping-cart"></span>
-              Total: {{amount}}
+              <strong>Sale</strong>
             </button>
           </tr>
       </div>
