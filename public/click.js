@@ -102,9 +102,10 @@
       //this function is responsible for inserting data into the database,
       //once completed, it will update the transaction data
         function buttonClick($event){
+          console.log("Hello");
            $scope.errorMessage='';
-           var dt = moment(data.myTime.format('YYYY/MM/DD HH:mm:ss')).format("YYYY-MM-DD HH:mm:ss");
-           buttonApi.clickButton(event.target.id, dt)
+           //var dt = moment(data.myTime.format('YYYY/MM/DD HH:mm:ss')).format("YYYY-MM-DD HH:mm:ss");
+           buttonApi.clickButton(event.target.id)
               .success(function(){
                 refreshList();
               })
@@ -160,7 +161,7 @@
           },
           //insert into the transaction table with the specified id
           clickButton: function(id, utcDate){
-            var url = apiUrl+'/click?id='+ id + '&time=' + utcDate;
+            var url = apiUrl+'/click?id='+ id;
             console.log("Attempting with "+url);
             return $http.post(url);
           },
