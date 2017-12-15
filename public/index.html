@@ -62,27 +62,21 @@
               </button>
 	   </td>
           </tr>
-          <tr>
-            <div style="position:absolute;right:0px;bottom:500px">
+	 </table>
+	  </div>
+            <div style="position:absolute;right:0px;bottom:250px">
             <button id="void" style="width:500px;font-size:30px" class="btn btn-danger" ng-click="voidClick($event);">
               <span class="glyphicon glyphicon-trash"></span>
               Void Transaction
             </button>
             </div>
-          </tr>
-          <tr>
             <button id="totalAmount"style="position:fixed;height:50px;bottom:450px;right:0px;width:500px;font-size:30px" class="btn btn-success">
               <strong>Total: ${{amount}}</strong>
             </button>
-	  </tr>
-	  <tr>
             <button id="totalAmount"style="position:fixed;height:50px;bottom:400px;right:0px;width:500px;font-size:30px" class="btn btn-success" ng-click="saleButton($event);">
               <span class="glyphicon glyphicon-shopping-cart"></span>
               <strong>Sale</strong>
             </button>
-          </tr>
-	 </table>
-      </div>
          <div style="position:fixed;height:50px;bottom:0px;left:0px;right:0px;margin-bottom:0px"} ng-show="errorMessage != ''">
             <div class="col-sm-12">
              <h3 class="text-danger">{{errorMessage}}</h3>
