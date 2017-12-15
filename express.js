@@ -106,7 +106,7 @@ app.get("/login", function(req, res){
 });
 
 app.post("/sale", function(req, res){
-  var usern = req.param('usern');
+  var sql = 'CALL ' + credentials.user + '.SALE()'
   res.send();
 });
 
