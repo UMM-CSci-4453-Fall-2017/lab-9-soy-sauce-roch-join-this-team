@@ -55,12 +55,12 @@
               Transaction Table
             </button>
           <tr ng-repeat="item in list" style="top:100px">
-            <td>
+           
               <button id="{{item.id}}"class="btn btn-primary"style ="height:50px;width:500px;font-size:15px"ng-click="deleteItem($event,'item.id');">
                 <span style="margin-right:10px" class="glyphicon glyphicon-tags"></span>
                 Item's Name: {{item.name}} Item's Amount: {{item.amount}} Item's Cost: {{item.cost}}
               </button>
-            </td>
+            
           </tr>
           <tr>
             <div style="position:absolute;right:0px;bottom:500px">
@@ -74,6 +74,8 @@
             <button id="totalAmount"style="position:fixed;height:50px;bottom:450px;right:0px;width:500px;font-size:30px" class="btn btn-success">
               <strong>Total: ${{amount}}</strong>
             </button>
+	  </tr>
+	  <tr>
             <button id="totalAmount"style="position:fixed;height:50px;bottom:400px;right:0px;width:500px;font-size:30px" class="btn btn-success" ng-click="saleButton($event);">
               <span class="glyphicon glyphicon-shopping-cart"></span>
               <strong>Sale</strong>
