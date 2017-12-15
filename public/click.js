@@ -18,6 +18,7 @@
          $scope.loginClick=loginClick;
          $scope.logOutClick=logOutClick;
          $scope.saleButton=saleButton;
+	 $scope.currentUser='';
 
          var loading = false;
 
@@ -43,6 +44,7 @@
                   $scope.logMessage = 'Wrong Username & Password';
                 } else {
                 if (data[0].CORRECT == 1){
+		  $scope.currentUser = $scope.username;
                   $scope.bool = true;
                 } else {
                   $scope.bool = false;
@@ -105,7 +107,7 @@
           console.log("Hello");
            $scope.errorMessage='';
            //var dt = moment(data.myTime.format('YYYY/MM/DD HH:mm:ss')).format("YYYY-MM-DD HH:mm:ss");
-           buttonApi.clickButton(event.target.id)
+           buttonApi.clickButton(event.target.id, $scope.currentUser)
               .success(function(){
                 refreshList();
               })
@@ -140,7 +142,7 @@
 
         function saleButton($event) {
           $scope.errorMessage='';
-          buttonApi.checkOutButton()
+          buttonApi.checkOutButton($scope.username)
              .success(function(){
                refreshList();
              })
@@ -160,8 +162,8 @@
             return $http.get(url);
           },
           //insert into the transaction table with the specified id
-          clickButton: function(id, utcDate){
-            var url = apiUrl+'/click?id='+ id;
+          clickButton: function(id, username){
+            var url = apiUrl+'/click?id='+ id + '&usern=' + username;
             console.log("Attempting with "+url);
             return $http.post(url);
           },
@@ -194,8 +196,8 @@
             console.log("Attempting with "+url);
             return $http.get(url);
           },
-          checkOutButton: function(){
-            var url = apiUrl + '/sale';
+          checkOutButton: function(username){
+            var url = apiUrl + '/sale?usern=' + username;
             console.log("Attempting with "+url);
             return $http.post(url);
           }

@@ -64,11 +64,13 @@ app.get("/list",function(req,res){
 //Again res.send() is added to free up the socket.
 app.post("/click",function(req,res){
   var id = req.param('id');
+  var username = req.param('usern');
   var sql = 'INSERT INTO ' + credentials.user + '.transaction values (' + id + ',(SELECT item FROM ' +
   credentials.user + '.inventory WHERE id = ' + id + '), 1 ,(SELECT prices FROM '+
-  credentials.user + '.prices WHERE id = ' + id + '), NOW()) on duplicate key update amount = amount + 1, ' +
+  credentials.user + '.prices WHERE id = ' + id + '), NOW(), 1, "' + username + '") on duplicate key update amount = amount + 1, ' +
   'cost = cost + (SELECT prices FROM '+ credentials.user + '.prices WHERE id = ' + id + ');'
   var query = sendToDatabase(dbf, sql);
+  console.log(sql);
   res.send();
 });
 
@@ -104,6 +106,7 @@ app.get("/login", function(req, res){
 });
 
 app.post("/sale", function(req, res){
+  var usern = req.param('usern');
   res.send();
 });
 
