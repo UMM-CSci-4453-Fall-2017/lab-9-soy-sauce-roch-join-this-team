@@ -199,7 +199,7 @@
           checkOutButton: function(username){
             var url = apiUrl + '/sale?usern=' + username;
             console.log("Attempting with "+url);
-            return $http.post(url);
+            return $http.get(url);
           }
        };
       }

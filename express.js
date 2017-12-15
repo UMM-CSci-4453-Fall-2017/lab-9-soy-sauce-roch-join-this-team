@@ -12,6 +12,7 @@ var buttons = [];
 var list = [];
 var totalAmt = [];
 var loginInfo = [];
+var receipt = [];
 
 //Method to query the database and returns the rows
 var queryDatabase = function(dbf, sql){
@@ -105,9 +106,19 @@ app.get("/login", function(req, res){
   .catch(function(err){console.log("DANGER:",err)});
 });
 
-app.post("/sale", function(req, res){
-  var sql = 'CALL ' + credentials.user + '.SALE()'
+app.get("/sale", function(req, res){
+  var sql = 'CALL ' + credentials.user + '.SALE()';
+  var query = sendToDatabase(dbf, sql);
   res.send();
+});
+
+app.get("/ticketize", function(req, res){
+  var sql = 'CALL Andy.RECEIPT()';
+  var query = queryDatabase(dbf, sql)
+  .then(fillInArray(receipt))
+  .then(function (receipt){
+    res.send(receipt);})
+  .catch(function(err){console.log("DANGER:",err)});
 });
 
 app.listen(port);
